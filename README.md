@@ -141,3 +141,14 @@ On push to `main`, it:
 
 - Keep CORS enabled in backend (`cors()` middleware).
 - Make sure `VITE_API_URL` points to the deployed backend URL in production.
+
+## If You See 404 NOT_FOUND On Vercel
+
+If deployment opens a Vercel 404 page, the project is usually building the wrong folder.
+
+This repo now includes `vercel.json` so Vercel can build from the root repository and publish `frontend/dist`.
+
+Also verify in Vercel Project Settings:
+- Framework Preset: Vite
+- Root Directory: leave empty when using `vercel.json`, or set it to `frontend` if configuring manually
+- Environment Variable: `VITE_API_URL` must point to your deployed backend URL
