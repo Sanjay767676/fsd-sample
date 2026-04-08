@@ -4,6 +4,17 @@ This project contains:
 - `frontend/` (React + Vite)
 - `backend/` (Node.js + Express)
 
+## Root Scripts
+
+From the project root:
+
+```bash
+npm run install:all
+npm run build
+npm run start:backend
+npm run dev:frontend
+```
+
 ## Project Structure
 
 ```text
@@ -84,7 +95,8 @@ Workflow file: `.github/workflows/ci.yml`
 On push to `main`, it:
 1. Installs backend dependencies
 2. Installs frontend dependencies
-3. Builds frontend
+3. Starts backend and checks `GET /api/message`
+4. Builds frontend
 
 ## Deployment Guide
 
