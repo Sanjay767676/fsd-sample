@@ -3,7 +3,7 @@ import { useState } from "react";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
-  const [message, setMessage] = useState("No message yet.");
+  const [message, setMessage] = useState("Click the button");
   const [loading, setLoading] = useState(false);
 
   async function getMessage() {
@@ -24,11 +24,10 @@ function App() {
 
   return (
     <main className="container">
-      <h1>Simple Full-Stack App</h1>
-      <p>{message}</p>
       <button type="button" onClick={getMessage} disabled={loading}>
-        {loading ? "Loading..." : "Get Backend Message"}
+        {loading ? "Loading..." : "Get Message"}
       </button>
+      <p>{message}</p>
     </main>
   );
 }
