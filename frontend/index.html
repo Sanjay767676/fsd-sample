@@ -6,7 +6,30 @@
     <title>Frontend</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-family:sans-serif;">
+        <button id="fallback-btn" type="button" style="padding:8px 12px;border:1px solid #000;background:#fff;color:#000;cursor:pointer;">Get Message</button>
+        <p id="fallback-text" style="margin:0;">Loading app...</p>
+      </main>
+    </div>
+    <script>
+      (function () {
+        const button = document.getElementById("fallback-btn");
+        const text = document.getElementById("fallback-text");
+        if (!button || !text) return;
+
+        button.addEventListener("click", async function () {
+          text.textContent = "Loading...";
+          try {
+            const response = await fetch("/api/message");
+            const data = await response.json();
+            text.textContent = data.message || "No message in response";
+          } catch (error) {
+            text.textContent = "App loading. If this stays, redeploy frontend with Vite build.";
+          }
+        });
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
